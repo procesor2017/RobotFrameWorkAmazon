@@ -3,4 +3,4 @@ Documentation       File with common keyword for dashboard
 
 *** Keywords ***  
 Dashboard - Find My Product
-    Find Product            ${USER_WHICH_PRODUCT_WE_WANT}
+    Find Product                    ${USER_WHICH_PRODUCT_WE_WANT}
