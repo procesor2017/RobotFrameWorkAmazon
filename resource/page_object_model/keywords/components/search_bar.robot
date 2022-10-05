@@ -9,6 +9,8 @@ Find Product
     [Arguments]                     ${product}      
     Click to Element                ${SEARCH_BAR_HINT_VIEW}
     Input text to Element           ${SEARCH_BAR_INPUT}     ${product}
-    Wait Until Element is Visible   ${SEARCH_ELEMENT_WITH_SEARCH_OFFER}
-    Tap                             ${SEARCH_ELEMENT_WITH_SEARCH_OFFER}
+    # Sometime we dont load search offer so i must press enter
+    # Wait Until Element is Visible   ${SEARCH_ELEMENT_WITH_SEARCH_OFFER}
+    # Tap                             ${SEARCH_ELEMENT_WITH_SEARCH_OFFER}
+    Press Keycode                   66
     Log                             Tapnuto

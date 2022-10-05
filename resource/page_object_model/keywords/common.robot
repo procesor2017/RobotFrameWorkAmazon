@@ -42,20 +42,78 @@ Swipe up 100
     Swipe by Percent        50  50  50  150
 
 Swipe down Find Element
-    [Arguments]             ${id_elements}      ${how_wanna_scroll_down}=3
+    [Arguments]             ${id_elements}    ${text_should_contain}    ${how_wanna_scroll_down}=2
     ${m_counter}=             Set Variable        0
     WHILE   ${m_counter}<${how_wanna_scroll_down}
-        ${element_exists}       Run Keyword And Return Status   Page Should Contain Element      ${id_elements}
-        ${ele}                  Run Keyword And Return Status   Get Webelements     ${id_elements}
-        IF  ${ele} == ${TRUE}
-            Log to Console          Element Exists from web ele!
-        END
-  
-        IF  ${element_exists} == ${TRUE}
-            Log to Console          Element Exists!
-            BREAK
+        sleep                 5
+        ${element_find}       Run Keyword And Return Status   Get Webelements     ${id_elements}
+        IF  ${element_find}==${TRUE}
+            @{elements}     Get Webelements     ${id_elements}
+            FOR      ${i}    IN                 @{elements}
+                ${element_text}                 Get Text        ${i}  
+                ${element_is_ok}                Run Keyword And Return Status      Should Be Equal As Strings  ${element_text}    ${text_should_contain}
+                IF  ${element_is_ok}==${TRUE}
+                    Click to Element            ${i}
+                    BREAK
+                END
+            END
         ELSE
-            Swipe Down 100
-            ${m_counter}=            Evaluate     ${m_counter}+1
+            Set Test Variable       ${element_is_ok}    ${FALSE}
         END
+        IF  ${element_is_ok}==${TRUE}
+            BREAK
+        END
+        Swipe Down 100
+        ${m_counter}=            Evaluate     ${m_counter}+1
     END
+
+
+
+Swipe down Find Element old
+    [Arguments]             ${id_elements}    ${how_wanna_scroll_down}=3
+    ${m_counter}=             Set Variable        0
+    WHILE   ${m_counter}<${how_wanna_scroll_down}
+        ${element_exists}       Run Keyword And Return Status   Page Should Contain Element         id=${id_elements}
+        IF   ${element_exists}==${TRUE}
+            Log To Console       Ahoj
+        ELSE
+            ${source}                 Get Source
+            Log                     ${source}
+            ${element_find}       Run Keyword And Return Status   Get Webelements     id=${id_elements}
+            IF  ${element_find}==${TRUE}
+                @{find_ele}         Get Webelements     id=${id_elements} 
+                FOR     ${i}    IN      @{find_ele}
+                    Log     ${i}
+                END
+            ELSE
+                Log     hovno
+            END
+        END
+        Swipe Down 100
+        ${m_counter}=            Evaluate     ${m_counter}+1
+    END
+
+Element Text Must Be
+    [Documentation]                     Check that element text is valid
+    ...                                 For right works u need specific element ID
+    ...                                 Text is convert to lowercase, withou special char and space
+    [Arguments]                         ${element_text}           ${text}
+    # Wait Until Element is Visible       ${element_id}               15
+    # ${element_text}                     Get Text                    ${element_id} 
+    ${element_text_lower_case}          Convert To Lowercase    ${element_text}
+    ${text_lower_case}                  Convert To Lowercase    ${text}
+    Set Test Variable                   ${clear_element_text}   ${element_text_lower_case.replace("\n", " ").replace(" ", "")}
+    Set Test Variable                   ${clear_your_text}      ${text_lower_case.replace("\\n", " ").replace("\n", " ").replace(" ", "")}
+    Should Be Equal As Strings          ${clear_element_text}   ${clear_your_text}  
+
+Element Text Must Contain
+    [Documentation]                     Check that element text is contain valid text
+    ...                                 For right works u need specific element ID
+    [Arguments]                         ${element_text}               ${text}
+    # Wait Until Element is Visible       ${element_id}               15
+    # ${element_text}                     Get Text                    ${element_id}  
+    ${element_text_lower_case}          Convert To Lowercase        ${element_text}
+    ${text_lower_case}                  Convert To Lowercase        ${text}
+    Set Test Variable                   ${clear_element_text}       ${element_text_lower_case.replace("\n", " ").replace(" ", "")}
+    Set Test Variable                   ${clear_your_text}          ${text_lower_case.replace("\\n", " ").replace("\n", " ").replace(" ", "")}
+    Should Contain                      ${clear_element_text}       ${clear_your_text}  
