@@ -42,7 +42,7 @@ Swipe up 100
     Swipe by Percent        50  50  50  150
 
 Swipe down Find Element
-    [Arguments]             ${id_elements}    ${text_should_contain}    ${how_wanna_scroll_down}=2
+    [Arguments]             ${id_elements}    ${text_should_contain}    ${how_wanna_scroll_down}=5
     ${m_counter}=             Set Variable        0
     WHILE   ${m_counter}<${how_wanna_scroll_down}
         sleep                 5
@@ -63,34 +63,38 @@ Swipe down Find Element
         IF  ${element_is_ok}==${TRUE}
             BREAK
         END
-        Swipe Down 100
+        Swipe Down 50
         ${m_counter}=            Evaluate     ${m_counter}+1
+        IF  ${m_counter}<${how_wanna_scroll_down}
+            Log                 End Loop
+        ELSE
+            Fail                Element Wasn Found
+        END
     END
 
-
-
-Swipe down Find Element old
-    [Arguments]             ${id_elements}    ${how_wanna_scroll_down}=3
-    ${m_counter}=             Set Variable        0
-    WHILE   ${m_counter}<${how_wanna_scroll_down}
-        ${element_exists}       Run Keyword And Return Status   Page Should Contain Element         id=${id_elements}
-        IF   ${element_exists}==${TRUE}
-            Log To Console       Ahoj
-        ELSE
-            ${source}                 Get Source
-            Log                     ${source}
-            ${element_find}       Run Keyword And Return Status   Get Webelements     id=${id_elements}
-            IF  ${element_find}==${TRUE}
-                @{find_ele}         Get Webelements     id=${id_elements} 
-                FOR     ${i}    IN      @{find_ele}
-                    Log     ${i}
-                END
-            ELSE
-                Log     hovno
+Find Element on Page
+    [Documentation]                     In Some case, appium try to find element, which is on page but appium doesnt see it. (Hi resource-id)
+    ...                                 In these case we use this keyword with class=<element class> and text which element contains.
+    [Arguments]                         ${id_elements}    ${text_should_contain}
+    ${element_find}       Run Keyword And Return Status   Get Webelements     ${id_elements}
+    IF  ${element_find}==${TRUE}
+        @{elements}     Get Webelements     ${id_elements}
+        FOR      ${i}    IN                 @{elements}
+            ${element_text}                 Get Text        ${i}  
+            ${element_is_ok}                Run Keyword And Return Status      Should Be Equal As Strings  ${element_text}    ${text_should_contain}
+            IF  ${element_is_ok}==${TRUE}
+                BREAK
             END
         END
-        Swipe Down 100
-        ${m_counter}=            Evaluate     ${m_counter}+1
+    ELSE
+        Set Test Variable       ${element_is_ok}    ${FALSE}
+    END
+    
+    IF  ${element_is_ok}==${TRUE}
+        Log             """${id_elements}""" exists on page.
+    ELSE
+        Capture Page Screenshot
+        FAIL        Element """${id_elements}""" isnt exists on page.
     END
 
 Element Text Must Be

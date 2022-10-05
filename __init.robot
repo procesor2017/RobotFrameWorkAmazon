@@ -35,8 +35,8 @@ Init
 
     # Component
     Import resource         ${ROOT_KEYWORDS_MOBILE}${/}components${/}search_bar.robot
-
-
+    Import resource         ${ROOT_KEYWORDS_MOBILE}${/}components${/}menu.robot
+    Import resource         ${ROOT_KEYWORDS_MOBILE}${/}components${/}modal_cart.robot
 
     # -----------   Variables ------------------
     Import resource         ${ROOT_VARIABLES_MOBILE}${/}common.resource
@@ -49,3 +49,5 @@ Init
 
     # Component
     Import resource         ${ROOT_VARIABLES_MOBILE}${/}components${/}search_bar.resource
+    Import resource         ${ROOT_VARIABLES_MOBILE}${/}components${/}menu.resource
+    Import resource         ${ROOT_VARIABLES_MOBILE}${/}components${/}modal_cart.resource

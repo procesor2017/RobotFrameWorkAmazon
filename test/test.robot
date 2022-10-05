@@ -5,7 +5,7 @@ Suite Setup         Init
 
 
 ***Test Cases***
-Poc :: TC
+TC2 ::Adding goods to the shopping cart
     Connect to Emulator
     Set user                        common_user
     Skip Login
@@ -14,3 +14,4 @@ Poc :: TC
     Dashboard - Find My Product
     Find Product in Search result   
     Add to Cart
+    Modal Cart :: Check Product in Cart
