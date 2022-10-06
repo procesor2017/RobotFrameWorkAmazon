@@ -24,3 +24,6 @@ Click to Menu Button
     IF  ${element_is_ok} == ${FALSE}
         FAIL
     END
+
+Click To Video
+    Swipe down Find Element     ${MENU_VIDEO}   ${MENU_VIDEO_TEXT}      1

@@ -72,6 +72,37 @@ Swipe down Find Element
         END
     END
 
+Swipe down Find Element by contentDescription
+    [Arguments]             ${id_elements}    ${text_should_contain}    ${how_wanna_scroll_down}=5
+    ${m_counter}=             Set Variable        0
+    WHILE   ${m_counter}<${how_wanna_scroll_down}
+        sleep                 5
+        ${element_find}       Run Keyword And Return Status   Get Webelements     ${id_elements}
+        IF  ${element_find}==${TRUE}
+            @{elements}     Get Webelements     ${id_elements}
+            FOR      ${i}    IN                 @{elements}
+                ${element_text}                 Get Element Attribute   ${i}     contentDescription  # content-desc 
+                ${element_is_ok}                Run Keyword And Return Status      Should Be Equal As Strings  ${element_text}    ${text_should_contain}
+                IF  ${element_is_ok}==${TRUE}
+                    Click to Element            ${i}
+                    BREAK
+                END
+            END
+        ELSE
+            Set Test Variable       ${element_is_ok}    ${FALSE}
+        END
+        IF  ${element_is_ok}==${TRUE}
+            BREAK
+        END
+        Swipe Down 50
+        ${m_counter}=            Evaluate     ${m_counter}+1
+        IF  ${m_counter}<${how_wanna_scroll_down}
+            Log                 End Loop
+        ELSE
+            Fail                Element Wasn Found
+        END
+    END    
+
 Find Element on Page
     [Documentation]                     In Some case, appium try to find element, which is on page but appium doesnt see it. (Hi resource-id)
     ...                                 In these case we use this keyword with class=<element class> and text which element contains.

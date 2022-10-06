@@ -6,6 +6,7 @@ Suite Setup         Init
 
 ***Test Cases***
 TC2 ::Adding goods to the shopping cart
+    [Documentation]                 done
     Connect to Emulator
     Set user                        common_user
     Skip Login
@@ -17,7 +18,7 @@ TC2 ::Adding goods to the shopping cart
     Modal Cart :: Check Product in Cart
 
 TC3 :: Filtr
-    [Tags]                     2
+    [Documentation]                 Done                    
     Connect to Emulator
     Set user                        filter_user
     Skip Login
@@ -27,3 +28,11 @@ TC3 :: Filtr
     Click to Filter
     Filter Use filter and show Results
     Check if Filter has Cell Phones
+
+TC4 :: Category - Video Sports
+    [Tags]                     2
+    Connect to Emulator
+    Set user                        filter_user
+    Skip Login
+    Click To Video
+    Find TV Channel
