@@ -22,3 +22,10 @@ Find Product in Search result
     IF  ${element_is_ok} == ${FALSE}
         FAIL
     END
+
+Click to Filter
+    Click to Element                    ${SEARCH_RESULT_FILTER}
+
+
+Check if Filter has Cell Phones
+    Wait Until Element is Visible       ${SEARCH_FILTER_CELL_PHONE}
