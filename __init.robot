@@ -33,6 +33,7 @@ Init
     Import resource         ${ROOT_KEYWORDS_MOBILE}${/}page${/}search_result.robot
     Import resource         ${ROOT_KEYWORDS_MOBILE}${/}page${/}cart.robot
     Import resource         ${ROOT_KEYWORDS_MOBILE}${/}page${/}video.robot
+    Import resource         ${ROOT_KEYWORDS_MOBILE}${/}page${/}sign_up.robot    
 
     # Component
     Import resource         ${ROOT_KEYWORDS_MOBILE}${/}components${/}search_bar.robot
@@ -49,6 +50,7 @@ Init
     Import resource         ${ROOT_VARIABLES_MOBILE}${/}page${/}search_result.resource
     Import resource         ${ROOT_VARIABLES_MOBILE}${/}page${/}cart.resource
     Import resource         ${ROOT_VARIABLES_MOBILE}${/}page${/}video.resource
+    Import resource         ${ROOT_VARIABLES_MOBILE}${/}page${/}sign_up.resource
 
     # Component
     Import resource         ${ROOT_VARIABLES_MOBILE}${/}components${/}search_bar.resource

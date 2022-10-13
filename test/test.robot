@@ -30,9 +30,16 @@ TC3 :: Filtr
     Check if Filter has Cell Phones
 
 TC4 :: Category - Video Sports
-    [Tags]                     2
+    [Tags]                     
     Connect to Emulator
     Set user                        filter_user
     Skip Login
     Click To Video
     Find TV Channel
+
+TC5 :: Login
+    [Tags]                     2
+    Connect to Emulator
+    Set user                        login_user
+    Click To Login
+    Sign Up User
