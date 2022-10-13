@@ -5,9 +5,19 @@ Suite Setup         Init
 
 
 ***Test Cases***
+TC1 :: POC
+    [Documentation]                 done
+    [Tags]                          2
+    Connect to Emulator 2             
+    Set user                        common_user
+    Skip Login
+    Dashboard - Find My Product
+    Sleep                           2
+
 TC2 ::Adding goods to the shopping cart
     [Documentation]                 done
-    Connect to Emulator
+    [Tags]                          
+    Connect to Emulator             
     Set user                        common_user
     Skip Login
     Dashboard - Find My Product
@@ -38,7 +48,7 @@ TC4 :: Category - Video Sports
     Find TV Channel
 
 TC5 :: Login
-    [Tags]                     2
+    [Tags]                     
     Connect to Emulator
     Set user                        login_user
     Click To Login

@@ -10,10 +10,29 @@ Connect to Emulator
     ...                             app=${APP_LOCATION}${APK_NAME}
     ...                             appPackage=${PACKAGE_NAME} 
     ...                             appActivity=${APP_MAIN_ACTIVITY} 
-    ...                             noReset=${RESET_OFF}
     ...                             fullReset=${FULL_RESET_ON}
+    ...                             noReset=${RESET_OFF}
     ...                             newCommandTimeout=${NEW_COMMAND_TIMEOUT}
+    ...                             platformVersion=${platformVersion}
+    ...                             deviceName=${deviceName}
+    ...                             automationName=${automationName}
+    ...                             unicodeKeyboard=${unicodeKeyboard}
+    ...                             resetKeyboard=${resetKeyboard}
+    ...                             udid=${udid}
 
+
+Connect to Emulator 2
+    set appium timeout                                                  10 seconds
+    Open Application                ${APPIUM_SERVER}
+    ...                             platformName=${PLATFORM}
+    ...                             app=${APP_LOCATION}${APK_NAME}
+    ...                             appPackage=${PACKAGE_NAME} 
+    ...                             appActivity=${APP_MAIN_ACTIVITY}
+    ...                             newCommandTimeout=${NEW_COMMAND_TIMEOUT}
+    ...                             skipDeviceInitialization=${skipDeviceInitialization}
+    ...                             skipServerInstallation=${skipServerInstallation}
+    ...                             noReset=${RESET_ON}
+    Reset Application
 
 Set user
     [Documentation]                         We set up user for test. After we try to find him in database and delete it.
