@@ -3,7 +3,7 @@ Documentation       File with common keyword for works with search bar
 
 *** Keywords ***  
 Check if Search Bar Exists
-    Wait Until Element is Visible       ${SEARCH_BAR_INPUT}
+    Wait Until Element is Visible      ${SEARCH_BAR_HINT_VIEW}
 
 Find Product
     [Arguments]                     ${product}      

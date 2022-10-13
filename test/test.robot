@@ -43,3 +43,4 @@ TC5 :: Login
     Set user                        login_user
     Click To Login
     Sign Up User
+    Dashboard - Check Loaded
