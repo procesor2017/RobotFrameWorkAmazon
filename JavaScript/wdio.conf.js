@@ -1,5 +1,25 @@
 const projectPath = require('path');
 const androidAppPath = projectPath.join(process.cwd(), "app/amazon-shopping.apk");
+const { Reporter } = require('@reportportal/agent-js-webdriverio');
+
+const config = {
+  token: '7b7daff4-a962-4751-bb1b-fdeb04e91e0a',
+  endpoint: 'http://167.235.231.123:8080/api/v1',
+  project: 'Tesena',
+  launch: 'superadmin_TEST_EXAMPLE',
+  mode: 'DEFAULT',
+  debug: false,
+  description: "Static launch description",
+  attributes: [{ key: 'key', value: 'value' }, { value: 'value' }],
+  attachPicturesToLogs: false,
+  rerun: false,
+  rerunOf: 'launchUuid of already existed launch', 
+  cucumberNestedSteps: false,
+  skippedIssue: true,
+  isLaunchMergeRequired: false,
+  reportSeleniumCommands: false,
+  seleniumCommandsLogLevel: 'debug',
+};
 
 exports.config = {
     //
@@ -62,7 +82,7 @@ exports.config = {
         "appium:platformVersion": "11.0",
         "appium:automationName":"UIAutomator2",
         "appium:app": androidAppPath,
-        'appium:noReset': false,
+        'appium:fullReset': true,
         'appium:appWaitActivity': 'com.amazon.mShop.navigation.MainActivity',
         "appium:autoGrantPermissions": true,
     }],
@@ -135,10 +155,8 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
-
-
-    
+    reporters: [[Reporter, config]], 
+    //reporters: ['spec'],
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/

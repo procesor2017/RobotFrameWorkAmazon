@@ -10,8 +10,6 @@ class Common{
         await (await this.findAndroidElementByText(string)).click();
     }
 
-
-
     async scrollDown(){
         const dimensionHeight = await browser.getWindowSize();
         const startPoint = await dimensionHeight.height * 0.5;

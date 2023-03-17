@@ -1,4 +1,5 @@
 const Searchbar = require("../Components/Searchbar.components")
+const Common = require("../Components/Common")
 
 class Dashboard {
     async CheckDashboardWasLoaded() {
@@ -9,6 +10,10 @@ class Dashboard {
 
     async FindProduct(myProduct) {
         await Searchbar.FindProduct(myProduct);
+    }
+
+    async ClickToVideo(){
+        await Common.waitAndClick("Video");
     }
 
 }

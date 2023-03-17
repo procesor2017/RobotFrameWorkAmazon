@@ -4,7 +4,7 @@ class LoginScreen{
     }
 
     async waitForLoadLoginPage(){
-        return $('id=skip_sign_in_button').waitForDisplayed({
+        $('id=skip_sign_in_button').waitForDisplayed({
             timeout: 20000,
         });
     }
@@ -16,6 +16,11 @@ class LoginScreen{
 
     async loginSkip(){
         await this.skipLogin.click();
+    }
+
+    async ResetMyApp(){
+        await driver.closeApp();
+        await driver.launchApp();
     }
 
 }
