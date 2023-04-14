@@ -6,7 +6,7 @@ Suite Setup         Init
 ***Test Cases***
 TC1 :: Find Product
     [Documentation]                 done
-    [Tags]                          
+    [Tags]                          0
     Connect to Emulator 2             
     Set user                        common_user
     Skip Login
@@ -14,7 +14,7 @@ TC1 :: Find Product
 
 TC2 ::Adding goods to the shopping cart
     [Documentation]                 done
-    [Tags]                          
+    [Tags]                          1
     Connect to Emulator             
     Set user                        common_user
     Skip Login
@@ -37,7 +37,7 @@ TC3 :: Filter
     Filter Use filter and show Results
 
 TC4 :: Category - Video Sports
-    [Tags]                     
+    [Tags]                          3
     Connect to Emulator
     Set user                        filter_user
     Skip Login

@@ -3,9 +3,9 @@ const androidAppPath = projectPath.join(process.cwd(), "app/amazon-shopping.apk"
 const { Reporter } = require('@reportportal/agent-js-webdriverio');
 
 const config = {
-  token: '7b7daff4-a962-4751-bb1b-fdeb04e91e0a',
-  endpoint: 'http://167.235.231.123:8080/api/v1',
-  project: 'Tesena',
+  token: 'add uuid',
+  endpoint: 'http://128.140.61.60:8080/api/v1',
+  project: 'tesena',
   launch: 'superadmin_TEST_EXAMPLE',
   mode: 'DEFAULT',
   debug: false,

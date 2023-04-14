@@ -171,3 +171,29 @@ Element Text Must Contain
     Set Test Variable                   ${clear_element_text}       ${element_text_lower_case.replace("\n", " ").replace(" ", "")}
     Set Test Variable                   ${clear_your_text}          ${text_lower_case.replace("\\n", " ").replace("\n", " ").replace(" ", "")}
     Should Contain                      ${clear_element_text}       ${clear_your_text}  
+
+Swipe Down and Find Element
+    [Documentation]         Keyword swipuje dolů dokud nenajde správný element
+    [Arguments]             ${id_elements}    ${how_wanna_scroll_down}=5
+    ${m_counter}=             Set Variable        0
+    WHILE   ${m_counter}<${how_wanna_scroll_down}
+        sleep                 2
+        ${my_source}          Get Source
+        Log                   ${my_source}
+        ${element_find}       Run Keyword And Return Status   Get Webelements     ${id_elements}
+        IF  ${element_find}==${TRUE}
+            Set Test Variable       ${element_is_ok}    ${TRUE}
+        ELSE
+            Set Test Variable       ${element_is_ok}    ${FALSE}
+        END
+        IF  ${element_is_ok}==${TRUE}
+            BREAK
+        END
+        Swipe Down 50
+        ${m_counter}=            Evaluate     ${m_counter}+1
+        IF  ${m_counter}<${how_wanna_scroll_down}
+            Log                 End Loop
+        ELSE
+            Fail                Element Wasnt Found
+        END
+    END
