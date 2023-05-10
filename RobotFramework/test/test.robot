@@ -5,9 +5,9 @@ Suite Setup         Init
 
 ***Test Cases***
 TC1 :: Find Product
-    [Documentation]                 done
-    [Tags]                          0
-    Connect to Emulator 2             
+    [Documentation]                 Find product with search bar
+    [Tags]                          Android  Product  Smoke
+    Connect to Emulator              
     Set user                        common_user
     Skip Login
     Dashboard - Find My Product
@@ -18,8 +18,8 @@ TC2 ::Adding goods to the shopping cart
     Connect to Emulator             
     Set user                        common_user
     Skip Login
-    Dashboard - Find My Product
-    Sleep                           3
+    Dashboard - Find My Product 
+    Check if Search Bar Exists
     Dashboard - Find My Product
     Find Product in Search result   
     Add to Cart
@@ -31,7 +31,7 @@ TC3 :: Filter
     Set user                        filter_user
     Skip Login
     Dashboard - Find My Product
-    Sleep                           3
+    Check if Search Bar Exists
     Dashboard - Find My Product
     Click to Filter
     Filter Use filter and show Results

@@ -50,7 +50,7 @@ class Common{
         if (selectorExists === false){
             let countLoop = 0;
             while(true){
-                await driver.pause(5000);
+                await driver.pause(2000);
                 console.log(countLoop);
                 await this.scrollDown();
                 let selectorCanExists = await element.isExisting();

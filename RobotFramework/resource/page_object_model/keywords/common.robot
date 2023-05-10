@@ -19,6 +19,7 @@ Connect to Emulator
     ...                             unicodeKeyboard=${unicodeKeyboard}
     ...                             resetKeyboard=${resetKeyboard}
     ...                             udid=${udid}
+    ...                             enableMultiWindows=${TRUE}
 
 
 Connect to Emulator 2
@@ -32,6 +33,7 @@ Connect to Emulator 2
     ...                             skipDeviceInitialization=${skipDeviceInitialization}
     ...                             skipServerInstallation=${skipServerInstallation}
     ...                             noReset=${RESET_ON}
+    ...                             enableMultiWindows=${TRUE}
     Reset Application
 
 Set user
@@ -60,38 +62,7 @@ Swipe Down 100
 Swipe up 100
     Swipe by Percent        50  50  50  150
 
-Swipe down Find Element
-    [Arguments]             ${id_elements}    ${text_should_contain}    ${how_wanna_scroll_down}=5
-    ${m_counter}=             Set Variable        0
-    WHILE   ${m_counter}<${how_wanna_scroll_down}
-        sleep                 5
-        ${element_find}       Run Keyword And Return Status   Get Webelements     ${id_elements}
-        IF  ${element_find}==${TRUE}
-            @{elements}     Get Webelements     ${id_elements}
-            FOR      ${i}    IN                 @{elements}
-                ${element_text}                 Get Text        ${i}  
-                ${element_is_ok}                Run Keyword And Return Status      Should Be Equal As Strings  ${element_text}    ${text_should_contain}
-                IF  ${element_is_ok}==${TRUE}
-                    Click to Element            ${i}
-                    BREAK
-                END
-            END
-        ELSE
-            Set Test Variable       ${element_is_ok}    ${FALSE}
-        END
-        IF  ${element_is_ok}==${TRUE}
-            BREAK
-        END
-        Swipe Down 50
-        ${m_counter}=            Evaluate     ${m_counter}+1
-        IF  ${m_counter}<${how_wanna_scroll_down}
-            Log                 End Loop
-        ELSE
-            Fail                Element Wasn Found
-        END
-    END
-
-Swipe down Find Element by contentDescription
+SSwipe down Find Element by contentDescription
     [Arguments]             ${id_elements}    ${text_should_contain}    ${how_wanna_scroll_down}=5
     ${m_counter}=             Set Variable        0
     WHILE   ${m_counter}<${how_wanna_scroll_down}
@@ -173,27 +144,26 @@ Element Text Must Contain
     Should Contain                      ${clear_element_text}       ${clear_your_text}  
 
 Swipe Down and Find Element
-    [Documentation]         Keyword swipuje dolů dokud nenajde správný element
-    [Arguments]             ${id_elements}    ${how_wanna_scroll_down}=5
-    ${m_counter}=             Set Variable        0
-    WHILE   ${m_counter}<${how_wanna_scroll_down}
-        sleep                 2
-        ${my_source}          Get Source
-        Log                   ${my_source}
-        ${element_find}       Run Keyword And Return Status   Get Webelements     ${id_elements}
-        IF  ${element_find}==${TRUE}
-            Set Test Variable       ${element_is_ok}    ${TRUE}
-        ELSE
-            Set Test Variable       ${element_is_ok}    ${FALSE}
+    [Arguments]                 ${id_elements}      ${how_wanna_scroll_down}=5
+    ${m_counter}=               Set Variable        0
+    ${element_exists}           Run Keyword And Return Status   Get Webelements     ${id_elements}
+    IF  ${element_exists}==${FALSE}
+        WHILE   ${m_counter}<${how_wanna_scroll_down}
+            Sleep                   2
+            ${element_find}         Run Keyword And Return Status   Get Webelements     ${id_elements}
+            IF  ${element_find}==${TRUE}
+                Click to Element            ${id_elements}
+                BREAK  
+            ELSE
+                Swipe Down 50
+                ${m_counter}=            Evaluate     ${m_counter}+1
+                IF  ${m_counter}<${how_wanna_scroll_down}
+                    Log                 End Loop
+                ELSE
+                    Fail                Element Wasn Found
+                END
+            END
         END
-        IF  ${element_is_ok}==${TRUE}
-            BREAK
-        END
-        Swipe Down 50
-        ${m_counter}=            Evaluate     ${m_counter}+1
-        IF  ${m_counter}<${how_wanna_scroll_down}
-            Log                 End Loop
-        ELSE
-            Fail                Element Wasnt Found
-        END
+    ELSE
+        Click to Element            ${id_elements}
     END

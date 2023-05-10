@@ -34,13 +34,14 @@ Init
     Import resource         ${ROOT_KEYWORDS_MOBILE}${/}page${/}cart.robot
     Import resource         ${ROOT_KEYWORDS_MOBILE}${/}page${/}video.robot
     Import resource         ${ROOT_KEYWORDS_MOBILE}${/}page${/}sign_up.robot    
+    Import resource         ${ROOT_KEYWORDS_MOBILE}${/}page${/}amazon_is_worldwide.robot   
 
     # Component
     Import resource         ${ROOT_KEYWORDS_MOBILE}${/}components${/}search_bar.robot
     Import resource         ${ROOT_KEYWORDS_MOBILE}${/}components${/}menu.robot
     Import resource         ${ROOT_KEYWORDS_MOBILE}${/}components${/}modal_cart.robot
     Import resource         ${ROOT_KEYWORDS_MOBILE}${/}components${/}modal_filter_search.robot
-
+ 
     # -----------   Variables ------------------
     Import resource         ${ROOT_VARIABLES_MOBILE}${/}common.resource
 
@@ -51,6 +52,7 @@ Init
     Import resource         ${ROOT_VARIABLES_MOBILE}${/}page${/}cart.resource
     Import resource         ${ROOT_VARIABLES_MOBILE}${/}page${/}video.resource
     Import resource         ${ROOT_VARIABLES_MOBILE}${/}page${/}sign_up.resource
+    Import resource         ${ROOT_VARIABLES_MOBILE}${/}page${/}amazon_is_worldwide.resource
 
     # Component
     Import resource         ${ROOT_VARIABLES_MOBILE}${/}components${/}search_bar.resource
