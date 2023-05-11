@@ -31,8 +31,9 @@ Filter Show Results
     
 Better Filter Show Results
     [Arguments]                 ${text_contain}
+    Sleep                       2           # without its its sometimes crashed (4 of 10 try)
     Click to Element            xpath=//android.widget.TextView[contains(@text,"${text_contain}")]
 
 Filter Use filter and show Results
-    Filter Click to Cell Phones
-    New Filter Show Results
+    Filter Click to Cell Phones     
+    Better Filter Show Results      Show

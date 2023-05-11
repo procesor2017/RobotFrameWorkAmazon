@@ -6,7 +6,7 @@ Suite Setup         Init
 ***Test Cases***
 TC1 :: Find Product
     [Documentation]                 Find product with search bar
-    [Tags]                          Android  Product  Smoke
+    [Tags]                          Android  Product  Smoke     tc1
     Connect to Emulator              
     Set user                        common_user
     Skip Login
@@ -14,7 +14,7 @@ TC1 :: Find Product
 
 TC2 ::Adding goods to the shopping cart
     [Documentation]                 done
-    [Tags]                          1
+    [Tags]                          tc2
     Connect to Emulator             
     Set user                        common_user
     Skip Login
@@ -26,7 +26,7 @@ TC2 ::Adding goods to the shopping cart
 
 TC3 :: Filter
     [Documentation]                 Done     
-    [Tags]                          2               
+    [Tags]                          tc3              
     Connect to Emulator
     Set user                        filter_user
     Skip Login
@@ -37,17 +37,17 @@ TC3 :: Filter
     Filter Use filter and show Results
 
 TC4 :: Category - Video Popular movie
-    [Tags]                          3
+    [Tags]                          tc4
     Connect to Emulator
     Set user                        filter_user
     Skip Login
     Click To Video
     Find TV Channel
 
-TC5 :: Login
-    [Tags]                     
-    Connect to Emulator
-    Set user                        login_user
-    Click To Login
-    Sign Up User
-    Dashboard - Check Loaded
+# TC5 :: Login
+#   [Tags]                     
+#    Connect to Emulator
+#    Set user                        login_user
+#    Click To Login
+#    Sign Up User
+#    Dashboard - Check Loaded

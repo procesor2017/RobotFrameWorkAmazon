@@ -2,7 +2,7 @@ const Common = require("../Components/Common")
 
 class Video{
     async FindTVChannel() {
-        await Common.swipeDownUntilFindElement($(`.//android.view.View[contains(@text,"Prime Top-rated movies See more")]`));
+        await Common.swipeDownUntilFindElement($(`.//android.view.View[contains(@text,"New release movie rentals")]`));
     }
 
 }
