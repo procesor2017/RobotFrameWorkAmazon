@@ -26,4 +26,5 @@ Click to Menu Button
     END
 
 Click To Video
-    Swipe down Find Element     ${MENU_VIDEO}   ${MENU_VIDEO_TEXT}      1
+    Sleep                       1
+    Click to Element            xpath=//android.widget.TextView[@resource-id='com.amazon.mShop.android.shopping:id/subnav_button_text' and contains(@text,"Video")]

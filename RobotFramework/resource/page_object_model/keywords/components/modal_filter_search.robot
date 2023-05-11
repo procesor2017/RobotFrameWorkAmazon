@@ -28,7 +28,11 @@ Filter Show Results
             FAIL
         END
     END
+    
+Better Filter Show Results
+    [Arguments]                 ${text_contain}
+    Click to Element            xpath=//android.widget.TextView[contains(@text,"${text_contain}")]
 
 Filter Use filter and show Results
     Filter Click to Cell Phones
-    Filter Show Results
+    New Filter Show Results

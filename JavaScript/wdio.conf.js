@@ -77,13 +77,13 @@ exports.config = {
     //
     capabilities: [{
         "path": "/wd/hub",
-        platformName: "Android",
+        "platformName": "Android",
         "appium:deviceName": 'Pixel 4 API 30',
         "appium:platformVersion": "11.0",
         "appium:automationName":"UIAutomator2",
         "appium:app": androidAppPath,
         'appium:fullReset': true,
-        'appium:appWaitActivity': 'com.amazon.mShop.navigation.MainActivity',
+        'appium:appWaitActivity': 'com.amazon.mShop.startup.StartupLocalizationSelectionActivity',
         "appium:autoGrantPermissions": true,
     }],
     //
@@ -155,8 +155,8 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: [[Reporter, config]], 
-    //reporters: ['spec'],
+    //reporters: [[Reporter, config]],  // for report portal uncomment these section
+    reporters: ['spec'],
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/

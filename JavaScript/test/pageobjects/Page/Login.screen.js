@@ -3,6 +3,10 @@ class LoginScreen{
         return $('id=skip_sign_in_button');
     }
 
+    get doneAmazonWorldWide() {
+        return $('.//android.view.View[@resource-id="landing-doneButton"]')
+    }
+
     async waitForLoadLoginPage(){
         $('id=skip_sign_in_button').waitForDisplayed({
             timeout: 20000,
@@ -15,6 +19,7 @@ class LoginScreen{
     */
 
     async loginSkip(){
+        await this.doneAmazonWorldWide.click()
         await this.skipLogin.click();
     }
 

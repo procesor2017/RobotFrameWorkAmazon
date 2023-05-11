@@ -16,11 +16,11 @@ class ModalFilterSearchbar{
     }
 
     async ClickToShowFilter(){
-        await this.getFilter.click();
+        await this.getFilterShowResults.click();
     }
 
     async ClickToCellPhones(){
-        await this.getFilter.click();
+        await this.getFilterSearchCellPhone.click();
     }
 
     async UseFilter(){

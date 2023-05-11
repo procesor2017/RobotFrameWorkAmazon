@@ -1,5 +1,5 @@
 *** Variables ***
 ${VIDEO_SPORTS_TV}         
-${VIDEO_POPULAR_MOVIES}         xpath=//android.widget.TextView[contains(@text,"Popular movies – Free with ads")]
+${VIDEO_POPULAR_MOVIES}         xpath=//android.view.View[contains(@text,"Prime Top-rated movies See more")]
 
 

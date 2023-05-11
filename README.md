@@ -16,10 +16,10 @@ WebdriverIO:
 ```
 npm run wdio
 ```
-
+## For Report portal
 robot --listener robotframework_reportportal.listener \
---variable RP_UUID:"7b7daff4-a962-4751-bb1b-fdeb04e91e0a" \
---variable RP_ENDPOINT:"http://167.235.231.123:8080" \
---variable RP_LAUNCH:"superadmin_TEST_EXAMPLE" \
---variable RP_PROJECT:"tesena" \
+--variable RP_UUID:"<uuid>" \
+--variable RP_ENDPOINT:"<end_point>" \
+--variable RP_LAUNCH:"<launch>" \
+--variable RP_PROJECT:"<project>" \
 test/test.robot

@@ -2,6 +2,11 @@ const Searchbar = require("../Components/Searchbar.components")
 const Common = require("../Components/Common")
 
 class Dashboard {
+    get menuVideo() {
+        return $(`//android.widget.TextView[@resource-id='com.amazon.mShop.android.shopping:id/subnav_button_text' and contains(@text,"Video")]`)
+    }
+
+
     async CheckDashboardWasLoaded() {
         await Searchbar.OpenSearchbar.waitForDisplayed({
             timeout: 20000,
@@ -13,7 +18,7 @@ class Dashboard {
     }
 
     async ClickToVideo(){
-        await Common.waitAndClick("Video");
+        await this.menuVideo.click();
     }
 
 }

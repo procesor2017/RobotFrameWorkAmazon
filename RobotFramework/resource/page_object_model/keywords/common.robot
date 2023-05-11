@@ -62,7 +62,7 @@ Swipe Down 100
 Swipe up 100
     Swipe by Percent        50  50  50  150
 
-SSwipe down Find Element by contentDescription
+Swipe down Find Element by contentDescription
     [Arguments]             ${id_elements}    ${text_should_contain}    ${how_wanna_scroll_down}=5
     ${m_counter}=             Set Variable        0
     WHILE   ${m_counter}<${how_wanna_scroll_down}

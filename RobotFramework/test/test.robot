@@ -21,7 +21,7 @@ TC2 ::Adding goods to the shopping cart
     Dashboard - Find My Product 
     Check if Search Bar Exists
     Dashboard - Find My Product
-    Find Product in Search result   
+    Find Product in Search result
     Add to Cart
 
 TC3 :: Filter
@@ -36,7 +36,7 @@ TC3 :: Filter
     Click to Filter
     Filter Use filter and show Results
 
-TC4 :: Category - Video Sports
+TC4 :: Category - Video Popular movie
     [Tags]                          3
     Connect to Emulator
     Set user                        filter_user
