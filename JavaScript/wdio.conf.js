@@ -78,12 +78,13 @@ exports.config = {
     capabilities: [{
         "path": "/wd/hub",
         "platformName": "Android",
+        "appium:app": androidAppPath,
+        "appium:appPackage": "com.amazon.mShop.android.shopping",
+        "appium:appActivity": "com.amazon.mShop.home.HomeActivity",
         "appium:deviceName": 'Pixel 4 API 30',
         "appium:platformVersion": "11.0",
         "appium:automationName":"UIAutomator2",
-        "appium:app": androidAppPath,
         'appium:fullReset': true,
-        'appium:appWaitActivity': 'com.amazon.mShop.startup.StartupLocalizationSelectionActivity',
         "appium:autoGrantPermissions": true,
     }],
     //
